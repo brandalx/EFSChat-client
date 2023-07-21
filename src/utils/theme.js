@@ -10,7 +10,7 @@ const colors = {
   black: '#000000',
   bg: '#F7F7F9',
   primary: {
-    default: '#4E60FF',
+    default: '#0147FF',
     lightest: '#F8F9FF',
     light: '#F3F4FF',
     30: '#CACFFF',
