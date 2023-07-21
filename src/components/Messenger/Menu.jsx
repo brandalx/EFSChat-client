@@ -1,10 +1,32 @@
-import { Box, Text } from '@chakra-ui/react';
-import React from 'react';
+import { Box, Text, useColorModeValue } from '@chakra-ui/react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Group from '../../assets/svg/Group';
 import User from '../../assets/svg/User';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Menu() {
+  const location = useLocation();
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const handleItemSelected = useCallback((itemId) => {
+    setSelectedItem(itemId);
+  }, []);
+  function normalizePath(path) {
+    return path.replace(/\/{2,}/g, '/').replace(/\/$/, '');
+  }
+
+  useEffect(() => {
+    const normalizedPath = normalizePath(location.pathname);
+    if (normalizedPath === '/messenger') {
+      handleItemSelected(1);
+    } else if (normalizedPath === '/messenger/group') {
+      handleItemSelected(2);
+    }
+  }, [location.pathname, handleItemSelected]);
+
+  const bgColor = useColorModeValue('neutral.white', 'neutral.grayDark');
+  const color = useColorModeValue('neutral.grayDark', 'neutral.white');
+
   return (
     <Box>
       <Box>
@@ -19,8 +41,8 @@ export default function Menu() {
                 my={2}
                 borderRadius='16px'
                 py={2}
-                bg='primary.default'
-                color='white'
+                bg={selectedItem === 1 ? 'primary.default' : bgColor}
+                color={selectedItem === 1 ? 'white' : color}
                 borderWidth='1px'
                 borderColor='primary.light'
                 _hover={{
@@ -45,8 +67,8 @@ export default function Menu() {
                 my={2}
                 borderRadius='16px'
                 py={2}
-                bg='primary.default'
-                color='white'
+                bg={selectedItem === 2 ? 'primary.default' : bgColor}
+                color={selectedItem === 2 ? 'white' : color}
                 borderWidth='1px'
                 borderColor='primary.light'
                 _hover={{
