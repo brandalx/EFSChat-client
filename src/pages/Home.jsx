@@ -6,9 +6,9 @@ export default function Home() {
       <Container maxW='1400px'>
         <Box>
           <Box h='80vh' display='flex' flexDir='column' justifyContent='space-between'>
-            <Box>d</Box>
+            <Box></Box>
             <Box>entrence</Box>
-            <Box>d</Box>
+            <Box></Box>
           </Box>
         </Box>
       </Container>
