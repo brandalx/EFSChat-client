@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+  color: red;
+}
+.wrapper {
+  overflow: hidden;
+}
+
+/* prevent zoom */
+html {
+  touch-action: manipulation; /* Optional: Improves scrolling performance on mobile devices */
+  touch-zooming: none; /* Disables pinch-to-zoom */
+  -ms-touch-action: manipulation; /* For Internet Explorer 10 and 11 */
+  -ms-touch-zoom: none; /* For Internet Explorer 10 and 11 */
+}
