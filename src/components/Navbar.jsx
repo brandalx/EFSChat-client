@@ -6,7 +6,7 @@ export default function Navbar() {
     <Box>
       {/* <Container maxW='1110px'> */}
       <chakra.header w='full' py={4}>
-        navbar
+        <Box color='primary.default'>navbar</Box>
       </chakra.header>
       {/* </Container> */}
     </Box>
