@@ -1,9 +1,11 @@
 import React from 'react';
-import { Box } from '@chakra-ui/react';
+import { Box, Container, Grid, GridItem } from '@chakra-ui/react';
 export default function Home() {
   return (
     <Box>
-      <Box color='primary.default'>Home</Box>
+      <Container maxW='1400px'>
+        <Box>entrance</Box>
+      </Container>
     </Box>
   );
 }

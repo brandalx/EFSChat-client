@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import { Box } from '@chakra-ui/react';
 import Main from './components/Main';
 import Home from './pages/Home';
+import Messenger from './pages/Messenger';
 export default function AppRoutes() {
   return (
     <Box>
@@ -16,6 +17,7 @@ export default function AppRoutes() {
           <Main>
             <Routes>
               <Route path='/' element={<Home />} />
+              <Route path='/messenger/*' element={<Messenger />} />
             </Routes>
           </Main>
           <Routes>
