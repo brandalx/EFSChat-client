@@ -4,7 +4,13 @@ export default function Home() {
   return (
     <Box>
       <Container maxW='1400px'>
-        <Box>entrance</Box>
+        <Box>
+          <Box h='80vh' display='flex' flexDir='column' justifyContent='space-between'>
+            <Box>d</Box>
+            <Box>entrence</Box>
+            <Box>d</Box>
+          </Box>
+        </Box>
       </Container>
     </Box>
   );
