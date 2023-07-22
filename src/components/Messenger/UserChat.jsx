@@ -1,5 +1,8 @@
 import { Box, Text } from '@chakra-ui/react';
 import React from 'react';
+import LeftMessage from './LeftMessage';
+import RightMessage from './RightMessage';
+import InputMessage from './InputMessage';
 
 export default function UserChat() {
   return (
@@ -8,10 +11,17 @@ export default function UserChat() {
         <Text fontSize='xs' fontWeight='bold' color='neutral.black'>
           User chat
         </Text>
-        <Box pt={5}>
-          <Text fontWeight='regular' placeholder='+1(217) 555-0113' fontSize='3xs' color='neutral.grayDark'>
-            Content
-          </Text>
+        <Box h='70vh' pt={5}>
+          <Box>
+            <Box></Box>
+
+            <LeftMessage />
+            <RightMessage />
+
+            <Box>
+              <InputMessage />
+            </Box>
+          </Box>
         </Box>
       </Box>
     </Box>
