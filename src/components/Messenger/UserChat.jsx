@@ -11,12 +11,13 @@ export default function UserChat() {
         <Text fontSize='xs' fontWeight='bold' color='neutral.black'>
           User chat
         </Text>
-        <Box h='70vh' pt={5}>
-          <Box>
+        <Box height='70vh' pt={5}>
+          <Box display='flex' flexDir='column' justifyContent='space-between' h='100%'>
             <Box></Box>
-
-            <LeftMessage />
-            <RightMessage />
+            <Box>
+              <LeftMessage />
+              <RightMessage />
+            </Box>
 
             <Box>
               <InputMessage />

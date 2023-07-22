@@ -29,7 +29,7 @@ export default function LeftMessage() {
         >
           <Box display='flex' color='neutral.grayDark' alignItems='center' w='100%' justifyContent='flex-end'>
             <Text fontWeight='regular' fontSize='2xs'>
-              Left message
+              Left message.
             </Text>
           </Box>
         </Box>
