@@ -2,14 +2,20 @@ import { ChevronRightIcon } from '@chakra-ui/icons';
 import { Box, Button, Icon, Input, InputGroup, InputRightElement } from '@chakra-ui/react';
 import React from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-export default function InputMessage() {
+export default function InputMessageUser() {
   return (
-    <Box>
+    <Box px='10px'>
       <Box>
         <InputGroup size='md'>
-          <Input fontSize='3xs' _placeholder={{ fontSize: '3xs' }} placeholder='Type your message...' />
+          <Input
+            borderRadius='100px'
+            fontSize='3xs'
+            _placeholder={{ fontSize: '3xs' }}
+            placeholder='Type your message...'
+          />
           <InputRightElement>
             <Button
+              borderRadius='100px'
               size='2xs'
               me={2}
               color='white'

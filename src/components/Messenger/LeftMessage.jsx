@@ -1,4 +1,4 @@
-import { Box, Text } from '@chakra-ui/react';
+import { Avatar, Box, Text } from '@chakra-ui/react';
 import React from 'react';
 import LeftCorner from '../../assets/svg/LeftCorner';
 
@@ -14,7 +14,10 @@ export default function LeftMessage() {
   }
 
   return (
-    <Box justifyContent='flex-start' display='flex'>
+    <Box justifyContent='flex-start' display='flex' alignItems='center'>
+      <Box me={2}>
+        <Avatar size='sm' name='John Doe' me={2} />
+      </Box>
       <Box my={2} w='fit-content'>
         <Box
           w='fit-content'
@@ -37,7 +40,7 @@ export default function LeftMessage() {
           <LeftCorner />
         </Box>
 
-        <Box ms={2}>
+        <Box transform='translateY(-16px)' ms={2}>
           <Text color='neutral.grayLight' fontWeight='regular' fontSize='3xs'>
             {formatTime(Date.now())}
           </Text>

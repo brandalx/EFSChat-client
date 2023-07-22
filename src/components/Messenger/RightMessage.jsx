@@ -1,4 +1,4 @@
-import { Box, Text } from '@chakra-ui/react';
+import { Avatar, Box, Text } from '@chakra-ui/react';
 import React from 'react';
 import RightCorner from '../../assets/svg/RightCorner';
 
@@ -14,7 +14,7 @@ export default function RightMessage() {
   }
 
   return (
-    <Box justifyContent='flex-end' display='flex'>
+    <Box justifyContent='flex-end' display='flex' alignItems='center'>
       <Box my={2} w='fit-content'>
         <Box
           w='fit-content'
@@ -37,11 +37,14 @@ export default function RightMessage() {
           <RightCorner />
         </Box>
 
-        <Box ms={2}>
+        <Box transform='translateY(-16px)' ms={2}>
           <Text color='neutral.grayLight' fontWeight='regular' fontSize='3xs'>
             {formatTime(Date.now())}
           </Text>
         </Box>
+      </Box>
+      <Box>
+        <Avatar ms={2} size='sm' name='Brandon Nolan' me={2} />
       </Box>
     </Box>
   );
