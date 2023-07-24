@@ -21,7 +21,7 @@ import {
 import theme from '../utils/theme';
 import Logo from '../assets/svg/Logo';
 import Dialogs from './Messenger/Dialogs';
-import { Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
 import UserChat from './Messenger/UserChat';
 import GroupChat from './Messenger/GroupChat';
 import Menu from './Messenger/Menu';
@@ -35,13 +35,22 @@ const Navbar: React.FC = () => {
         <Box mt='10px' borderRadius='16px' borderWidth='1px' py='20px' px='10px'>
           <chakra.header w='full' py={4}>
             <Box color='primary.default' display='flex' justifyContent='space-between'>
-              <Box display='flex' alignItems='center'>
-                {' '}
-                <Logo />{' '}
-                <Text ms={2} fontSize='xs' fontWeight='bold' color='primary.default'>
-                  EFS Chat
-                </Text>
-              </Box>
+              <Link to='/'>
+                <Box
+                  transition='all 0.3s'
+                  borderRadius='16px'
+                  px={2}
+                  _hover={{ bg: 'primary.light', transition: 'all 0.3s' }}
+                  display='flex'
+                  alignItems='center'
+                >
+                  {' '}
+                  <Logo />{' '}
+                  <Text ms={2} fontSize='xs' fontWeight='bold' color='primary.default'>
+                    EFS Chat
+                  </Text>
+                </Box>
+              </Link>
               <Box display={{ base: 'block', lg: 'none' }}>
                 <Button colorScheme='blue' onClick={onOpen}>
                   Open

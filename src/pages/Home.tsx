@@ -1,5 +1,6 @@
 import React from 'react';
 import { Box, Container, Grid, GridItem } from '@chakra-ui/react';
+import Login from '../components/Home/Login';
 
 const Home: React.FC = () => {
   return (
@@ -8,7 +9,9 @@ const Home: React.FC = () => {
         <Box>
           <Box h='80vh' display='flex' flexDir='column' justifyContent='space-between'>
             <Box></Box>
-            <Box>sjdhwuedhcauj</Box>
+            <Box>
+              <Login />
+            </Box>
             <Box></Box>
           </Box>
         </Box>
