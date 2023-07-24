@@ -9,6 +9,8 @@ import {
   Grid,
   GridItem,
   Input,
+  InputGroup,
+  InputLeftElement,
   Stack,
   Text,
   VisuallyHidden
@@ -18,7 +20,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Login: React.FC = () => {
-  const [name, setName] = React.useState<string>('');
+  const [nickname, setName] = React.useState<string>('');
 
   const navigate = useNavigate();
 
@@ -31,7 +33,7 @@ const Login: React.FC = () => {
     console.log(_bodyData);
     navigate('/messenger');
   };
-  const isValid = () => name.length > 5;
+  const isValid = () => nickname.length > 5;
   return (
     <Box>
       <Container maxW='350px'>
@@ -42,33 +44,38 @@ const Login: React.FC = () => {
                 Enter Chat
               </Text>
               <Text fontSize='2xs' color='neutral.grayDark'>
-                Enter your name and join EFC Chat
+                Enter your nickname and join EFC Chat <br />
               </Text>
+              <Text color='primary.default'>As simple as that!</Text>
             </Box>
             <Box mt='30px'>
               <form onSubmit={handleSubmit(onSubForm)}>
                 <Stack spacing={4}></Stack>
-                <FormControl id='name' isInvalid={!!errors.name}>
+                <FormControl id='nickname' isInvalid={!!errors.nickname}>
                   <FormLabel fontWeight='semibold' fontSize='3xs' color='neutral.grayDark'>
-                    Name
+                    Nickname
                   </FormLabel>
-                  <Input
-                    id='name'
-                    {...register('name', {
-                      required: { value: true, message: 'This field is required' },
-                      minLength: { value: 6, message: 'Minimum length should be 6' }
-                    })}
-                    type='name'
-                    background='neutral.white'
-                    _placeholder={{ color: 'neutral.gray' }}
-                    borderRadius='8px'
-                    fontSize='2xs'
-                    placeholder='John Doe'
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  />
+                  <InputGroup>
+                    <InputLeftElement pointerEvents='none' color='gray.300' fontSize='1.2em' children='@' />
+                    <Input
+                      id='nickname'
+                      {...register('nickname', {
+                        required: { value: true, message: 'This field is required' },
+                        minLength: { value: 6, message: 'Minimum length should be 6' }
+                      })}
+                      type='nickname'
+                      background='neutral.white'
+                      _placeholder={{ color: 'neutral.gray' }}
+                      borderRadius='8px'
+                      fontSize='2xs'
+                      color='neutral.black'
+                      placeholder='John Doe'
+                      value={nickname}
+                      onChange={(e) => setName(e.target.value.toLocaleLowerCase())}
+                    />
+                  </InputGroup>
                   <FormErrorMessage p={0} mt={2} fontSize='3xs'>
-                    {errors.name && typeof errors.name === 'string' && errors.name}
+                    {errors.nickname && typeof errors.nickname === 'string' && errors.nickname}
                   </FormErrorMessage>
                 </FormControl>
 
