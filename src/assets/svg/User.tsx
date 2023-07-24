@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function User() {
+const User: React.FC = () => {
   return (
     <div>
       <svg
@@ -21,4 +21,5 @@ export default function User() {
       </svg>
     </div>
   );
-}
+};
+export default User;

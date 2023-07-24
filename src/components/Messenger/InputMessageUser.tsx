@@ -2,7 +2,8 @@ import { ChevronRightIcon } from '@chakra-ui/icons';
 import { Box, Button, Icon, Input, InputGroup, InputRightElement } from '@chakra-ui/react';
 import React from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-export default function InputMessageUser() {
+
+const InputMessageUser: React.FC = () => {
   return (
     <Box px='10px'>
       <Box>
@@ -29,4 +30,5 @@ export default function InputMessageUser() {
       </Box>
     </Box>
   );
-}
+};
+export default InputMessageUser;

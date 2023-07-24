@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Logo() {
+const Logo: React.FC = () => {
   return (
     <div>
       <svg
@@ -24,4 +24,6 @@ export default function Logo() {
       </svg>
     </div>
   );
-}
+};
+
+export default Logo;

@@ -1,7 +1,7 @@
 import { Box, Text } from '@chakra-ui/react';
 import React from 'react';
 
-export default function Dialogs() {
+const Dialogs: React.FC = () => {
   return (
     <Box>
       <Box>
@@ -18,4 +18,6 @@ export default function Dialogs() {
       </Box>
     </Box>
   );
-}
+};
+
+export default Dialogs;

@@ -1,13 +1,14 @@
 import { ChakraProvider } from '@chakra-ui/provider';
-import React, { useEffect, useState } from 'react';
-
+import React from 'react';
 import theme from './utils/theme';
 import AppRoutes from './AppRoutes';
 
-export default function App() {
+const App: React.FC = () => {
   return (
     <ChakraProvider theme={theme}>
       <AppRoutes />
     </ChakraProvider>
   );
-}
+};
+
+export default App;

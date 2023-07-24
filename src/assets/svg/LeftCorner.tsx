@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function LeftCorner() {
+const LeftCorner: React.FC = () => {
   return (
     <div>
       <svg width={19} height={21} viewBox='0 0 19 21' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -11,4 +11,5 @@ export default function LeftCorner() {
       </svg>
     </div>
   );
-}
+};
+export default LeftCorner;

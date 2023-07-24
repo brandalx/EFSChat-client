@@ -1,15 +1,23 @@
 import { Avatar, Box, Text } from '@chakra-ui/react';
 import React from 'react';
 import LeftCorner from '../../assets/svg/LeftCorner';
+interface RightMessageProps {
+  message: string;
+  time: number;
+}
 
-export default function LeftMessage() {
+const LeftMessage: React.FC = () => {
   //   function formatTime(date) {
   //     const options = { hour12: true, hour: 'numeric', minute: 'numeric', second: 'numeric' };
   //     return new Date(date).toLocaleTimeString('en-US', options);
   //   }
 
-  function formatTime(date) {
-    const options = { hour12: true, hour: 'numeric', minute: 'numeric' };
+  function formatTime(date: number) {
+    const options: Intl.DateTimeFormatOptions = {
+      hour12: true,
+      hour: 'numeric',
+      minute: 'numeric'
+    };
     return new Date(date).toLocaleTimeString('en-US', options);
   }
 
@@ -48,4 +56,5 @@ export default function LeftMessage() {
       </Box>
     </Box>
   );
-}
+};
+export default LeftMessage;

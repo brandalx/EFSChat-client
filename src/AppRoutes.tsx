@@ -6,7 +6,8 @@ import { Box } from '@chakra-ui/react';
 import Main from './components/Main';
 import Home from './pages/Home';
 import Messenger from './pages/Messenger';
-export default function AppRoutes() {
+
+const AppRoutes: React.FC = () => {
   return (
     <Box>
       <BrowserRouter>
@@ -27,4 +28,6 @@ export default function AppRoutes() {
       </BrowserRouter>
     </Box>
   );
-}
+};
+
+export default AppRoutes;

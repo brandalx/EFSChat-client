@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Group() {
+const Group: React.FC = () => {
   return (
     <div>
       <svg
@@ -23,4 +23,6 @@ export default function Group() {
       </svg>
     </div>
   );
-}
+};
+
+export default Group;

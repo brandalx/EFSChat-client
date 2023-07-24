@@ -4,14 +4,15 @@ import Group from '../../assets/svg/Group';
 import User from '../../assets/svg/User';
 import { Link, useLocation } from 'react-router-dom';
 
-export default function Menu() {
+const Menu: React.FC = () => {
   const location = useLocation();
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedItem, setSelectedItem] = useState<number | null>(null);
 
-  const handleItemSelected = useCallback((itemId) => {
+  const handleItemSelected = useCallback((itemId: number) => {
     setSelectedItem(itemId);
   }, []);
-  function normalizePath(path) {
+
+  function normalizePath(path: string) {
     return path.replace(/\/{2,}/g, '/').replace(/\/$/, '');
   }
 
@@ -92,4 +93,6 @@ export default function Menu() {
       </Box>
     </Box>
   );
-}
+};
+
+export default Menu;

@@ -1,7 +1,8 @@
 import React from 'react';
 import Navbar from './Navbar';
 import theme from '../utils/theme';
-export default function Header() {
+
+const Header: React.FC = () => {
   return (
     <header
       className='page-header'
@@ -10,4 +11,6 @@ export default function Header() {
       <Navbar />
     </header>
   );
-}
+};
+
+export default Header;
