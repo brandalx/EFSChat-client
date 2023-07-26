@@ -6,6 +6,7 @@ import { Box } from '@chakra-ui/react';
 import Main from './components/Main';
 import Home from './pages/Home';
 import Messenger from './pages/Messenger';
+import Page404 from './pages/page404';
 
 const AppRoutes: React.FC = () => {
   return (
@@ -19,6 +20,7 @@ const AppRoutes: React.FC = () => {
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/messenger/*' element={<Messenger />} />
+              <Route path='/*' element={<Page404 />} />
             </Routes>
           </Main>
           <Routes>
