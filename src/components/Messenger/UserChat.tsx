@@ -5,14 +5,14 @@ import RightMessage from './RightMessage';
 
 import InputMessageUser from './InputMessageUser';
 
-const UserChat: React.FC = () => {
+const UserChat: React.FC = ({ userInfo }) => {
   return (
     <Box mb={4}>
       <Box borderRadius='16px' borderWidth='1px' py='10px'>
         <Box py={2} ms={2} display='flex' justifyContent='center' alignItems='center'>
           <Avatar size='sm' name='John' me={2} />
           <Text textAlign='center' fontSize='xs' fontWeight='bold' color='neutral.black'>
-            John Doe
+            {userInfo != null && userInfo}
           </Text>
         </Box>
 

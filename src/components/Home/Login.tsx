@@ -34,7 +34,7 @@ const Login: React.FC = () => {
 
   const onSubForm = (_bodyData: object) => {
     console.log(_bodyData);
-
+    setUserInfo(nickname);
     navigate('/messenger', { state: { nickname: nickname } });
   };
 

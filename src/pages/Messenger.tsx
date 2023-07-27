@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   Box,
   Button,
@@ -19,7 +19,9 @@ import MessengerWindow from '../components/Messenger/GroupChat';
 import { Route, Routes } from 'react-router-dom';
 import GroupChat from '../components/Messenger/GroupChat';
 import UserChat from '../components/Messenger/UserChat';
+import { userContext } from '../Context/globalContext';
 const Messenger: React.FC = () => {
+  const { userInfo, setUserInfo } = useContext(userContext);
   return (
     <Box>
       <Container maxW='1400px'>
@@ -33,8 +35,8 @@ const Messenger: React.FC = () => {
             </GridItem>
             <GridItem w='100%'>
               <Routes>
-                <Route path='/' element={<UserChat />} />
-                <Route path='/group' element={<GroupChat />} />
+                <Route path='/' element={<UserChat userInfo={userInfo} />} />
+                <Route path='/group' element={<GroupChat userInfo={userInfo} />} />
               </Routes>
             </GridItem>
           </Grid>
