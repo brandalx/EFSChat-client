@@ -1,4 +1,5 @@
 import {
+  Badge,
   Box,
   Button,
   Container,
@@ -19,6 +20,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import { userContext } from '../../Context/globalContext';
+import Logo from '../../assets/svg/Logo';
 
 const Login: React.FC = () => {
   const navigate = useNavigate();
@@ -53,8 +55,35 @@ const Login: React.FC = () => {
     <Box>
       <Container maxW='350px'>
         <Box w='100%' data-aos='fade-up'>
+          <Box transform='translateY(30px)'>
+            <Flex alignItems='center' justifyContent='center'>
+              {' '}
+              <Logo />
+              <Text fontSize='sm' fontWeight='extrabold' color='primary.default' ml='1'>
+                EFS Chat
+              </Text>
+            </Flex>
+          </Box>{' '}
+        </Box>
+        <Box>
           <Box>
             <Box>
+              {' '}
+              <Badge
+                transform='translateX(300px) translateY(30px)'
+                display='flex'
+                justifyItems='center'
+                alignItems='center'
+                width='25px'
+                height='25px'
+                borderRadius='100px'
+                bg='error.default'
+                color='white'
+              >
+                <Text fontSize='3xs' mx='auto'>
+                  +1
+                </Text>
+              </Badge>
               <Text fontSize='2xl' fontWeight='bold' color='neutral.black'>
                 Enter Chat
               </Text>

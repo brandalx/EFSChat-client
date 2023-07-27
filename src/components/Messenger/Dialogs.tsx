@@ -47,7 +47,7 @@ const Dialogs: React.FC = () => {
           <Text fontSize='xs' fontWeight='bold' color='neutral.black'>
             Dialogs
           </Text>
-          {location.pathname === '/messenger/' && (
+          {location.pathname === '/messenger' && (
             <Box pt={5}>
               {testArr.map((item, index) => {
                 if (item._dialogType === 'chat') {
