@@ -20,7 +20,7 @@ import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Login: React.FC = () => {
-  const [nickname, setName] = React.useState<string>('');
+  const [nickname, setNickname] = useState<string>('');
 
   const navigate = useNavigate();
 
@@ -34,6 +34,16 @@ const Login: React.FC = () => {
     navigate('/messenger');
   };
   const isValid = () => nickname.length > 5;
+
+  const validateInput = (input: string) => {
+    console.log(nickname);
+    console.log(input);
+
+    const pattern = /[^a-z0-9]/g;
+    const result = input.replace(pattern, '');
+
+    setNickname(result.toLowerCase());
+  };
   return (
     <Box>
       <Container maxW='350px'>
@@ -71,7 +81,7 @@ const Login: React.FC = () => {
                       color='neutral.black'
                       placeholder='John Doe'
                       value={nickname}
-                      onChange={(e) => setName(e.target.value.toLocaleLowerCase())}
+                      onChange={(e) => validateInput(e.target.value.toLocaleLowerCase())}
                     />
                   </InputGroup>
                   <FormErrorMessage p={0} mt={2} fontSize='3xs'>
