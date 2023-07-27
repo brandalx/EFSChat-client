@@ -1,6 +1,7 @@
 import { Avatar, Box, Text } from '@chakra-ui/react';
 import React from 'react';
 import RightCorner from '../../assets/svg/RightCorner';
+import useTime from '../../hooks/useTime';
 interface RightMessageProps {
   message: string;
   time: number;
@@ -12,14 +13,7 @@ const RightMessage: React.FC = () => {
   //     return new Date(date).toLocaleTimeString('en-US', options);
   //   }
 
-  function formatTime(date: number) {
-    const options: Intl.DateTimeFormatOptions = {
-      hour12: true,
-      hour: 'numeric',
-      minute: 'numeric'
-    };
-    return new Date(date).toLocaleTimeString('en-US', options);
-  }
+  const formatTime = useTime();
 
   return (
     <Box justifyContent='flex-end' display='flex' alignItems='center'>

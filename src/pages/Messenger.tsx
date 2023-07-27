@@ -31,11 +31,13 @@ const Messenger: React.FC = () => {
               <Menu />
             </GridItem>
             <GridItem w='100%' display={{ base: 'none', lg: 'block' }}>
-              <Dialogs />
+              <Routes>
+                <Route path='/*' element={<Dialogs />} />
+              </Routes>
             </GridItem>
             <GridItem w='100%'>
               <Routes>
-                <Route path='/' element={<UserChat userInfo={userInfo} />} />
+                <Route path='/user' element={<UserChat userInfo={userInfo} />} />
                 <Route path='/group' element={<GroupChat userInfo={userInfo} />} />
               </Routes>
             </GridItem>
