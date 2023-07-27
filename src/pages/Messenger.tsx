@@ -20,6 +20,7 @@ import { Route, Routes, useParams } from 'react-router-dom';
 import GroupChat from '../components/Messenger/GroupChat';
 import UserChat from '../components/Messenger/UserChat';
 import { userContext } from '../Context/globalContext';
+import TemplateClean from '../components/Messenger/TemplateClean';
 const Messenger: React.FC = () => {
   const { userInfo, setUserInfo } = useContext(userContext);
   const params = useParams();
@@ -41,6 +42,8 @@ const Messenger: React.FC = () => {
               <Routes>
                 <Route path='/user/:id' element={<UserChat userInfo={userInfo} />} />
                 <Route path='/group/:id' element={<GroupChat userInfo={userInfo} />} />
+                <Route path='/user' element={<TemplateClean data={'Select chat or begin a new one'} />} />
+                <Route path='/group' element={<TemplateClean data={'Select group or begin a new one'} />} />
               </Routes>
             </GridItem>
           </Grid>
