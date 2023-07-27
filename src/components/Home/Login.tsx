@@ -15,25 +15,30 @@ import {
   Text,
   VisuallyHidden
 } from '@chakra-ui/react';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
+import { userContext } from '../../Context/globalContext';
 
 const Login: React.FC = () => {
+  const navigate = useNavigate();
   const [nickname, setNickname] = useState<string>('');
 
-  const navigate = useNavigate();
+  const { userInfo, setUserInfo } = useContext(userContext);
 
   const {
     handleSubmit,
     register,
     formState: { errors, isSubmitting }
   } = useForm();
+
   const onSubForm = (_bodyData: object) => {
     console.log(_bodyData);
-    navigate('/messenger');
+
+    navigate('/messenger', { state: { nickname: nickname } });
   };
-  const isValid = () => nickname.length > 5;
+
+  const isValid = () => nickname.replace(/[^a-z0-9]/g, '').toLowerCase().length > 5;
 
   const validateInput = (input: string) => {
     console.log(nickname);
