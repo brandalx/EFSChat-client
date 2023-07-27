@@ -37,7 +37,7 @@ const Login: React.FC = () => {
   const onSubForm = (_bodyData: object) => {
     console.log(_bodyData);
     setUserInfo(nickname);
-    navigate('/messenger', { state: { nickname: nickname } });
+    navigate('/messenger/user', { state: { nickname: nickname } });
   };
 
   const isValid = () => nickname.replace(/[^a-z0-9]/g, '').toLowerCase().length > 5;

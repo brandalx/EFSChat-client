@@ -18,7 +18,7 @@ const Menu: React.FC = () => {
 
   useEffect(() => {
     const normalizedPath = normalizePath(location.pathname);
-    if (normalizedPath === '/messenger') {
+    if (normalizedPath === '/messenger/user') {
       handleItemSelected(1);
     } else if (normalizedPath === '/messenger/group') {
       handleItemSelected(2);
@@ -36,7 +36,7 @@ const Menu: React.FC = () => {
             Menu
           </Text>
           <Box pt={5}>
-            <Link to='/messenger/'>
+            <Link to='/messenger/user'>
               <Box
                 transition='all 0.3s'
                 my={2}

@@ -40,6 +40,9 @@ const Dialogs: React.FC = () => {
     }
   ];
   const location = useLocation();
+  const isMessengerChatPath = location.pathname.startsWith('/messenger/user');
+  const isMessengerGroupPath = location.pathname.startsWith('/messenger/group');
+
   return (
     <Box>
       <Box>
@@ -47,7 +50,7 @@ const Dialogs: React.FC = () => {
           <Text fontSize='xs' fontWeight='bold' color='neutral.black'>
             Dialogs
           </Text>
-          {location.pathname === '/messenger' && (
+          {isMessengerChatPath && (
             <Box pt={5}>
               {testArr.map((item, index) => {
                 if (item._dialogType === 'chat') {
@@ -57,7 +60,7 @@ const Dialogs: React.FC = () => {
             </Box>
           )}
 
-          {location.pathname === '/messenger/group' && (
+          {isMessengerGroupPath && (
             <Box pt={5}>
               {testArr.map((item, index) => {
                 if (item._dialogType === 'group') {

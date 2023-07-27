@@ -16,12 +16,14 @@ import Menu from '../components/Messenger/Menu';
 import Dialogs from '../components/Messenger/Dialogs';
 import MessengerWindow from '../components/Messenger/GroupChat';
 
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useParams } from 'react-router-dom';
 import GroupChat from '../components/Messenger/GroupChat';
 import UserChat from '../components/Messenger/UserChat';
 import { userContext } from '../Context/globalContext';
 const Messenger: React.FC = () => {
   const { userInfo, setUserInfo } = useContext(userContext);
+  const params = useParams();
+
   return (
     <Box>
       <Container maxW='1400px'>
@@ -37,8 +39,8 @@ const Messenger: React.FC = () => {
             </GridItem>
             <GridItem w='100%'>
               <Routes>
-                <Route path='/user' element={<UserChat userInfo={userInfo} />} />
-                <Route path='/group' element={<GroupChat userInfo={userInfo} />} />
+                <Route path='/user/:id' element={<UserChat userInfo={userInfo} />} />
+                <Route path='/group/:id' element={<GroupChat userInfo={userInfo} />} />
               </Routes>
             </GridItem>
           </Grid>
