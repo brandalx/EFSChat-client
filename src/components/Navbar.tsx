@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
   const [isInMessenger, setIsInMessenger] = useState<boolean>(false);
   const location = useLocation();
   useEffect(() => {
-    if (location.pathname === '/messenger') {
+    if (location.pathname.startsWith('/messenger')) {
       setIsInMessenger(true);
     } else {
       setIsInMessenger(false);
