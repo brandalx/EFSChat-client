@@ -6,6 +6,7 @@ import {
   Container,
   Drawer,
   DrawerBody,
+  DrawerCloseButton,
   DrawerContent,
   DrawerHeader,
   DrawerOverlay,
@@ -25,6 +26,7 @@ import { Link, Route, Routes, useLocation } from 'react-router-dom';
 import UserChat from './Messenger/UserChat';
 import GroupChat from './Messenger/GroupChat';
 import Menu from './Messenger/Menu';
+import MenuLogo from '../assets/svg/MenuLogo';
 const Navbar: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [placement, setPlacement] = React.useState<string>('left');
@@ -37,6 +39,22 @@ const Navbar: React.FC = () => {
       setIsInMessenger(false);
     }
   }, [location.pathname]);
+
+  const mdMediaQuery = window.matchMedia('(min-width: 48em)');
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (mdMediaQuery.matches && isOpen) {
+        onClose();
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [mdMediaQuery, isOpen, onClose]);
 
   return (
     <Box>
@@ -60,35 +78,45 @@ const Navbar: React.FC = () => {
                   </Text>
                 </Box>
               </Link>
-              {isInMessenger && (
-                <Box display={{ base: 'block', lg: 'none' }}>
-                  <Button colorScheme='blue' onClick={onOpen}>
-                    Open
-                  </Button>
-                  <Drawer placement={placement} onClose={onClose} isOpen={isOpen}>
-                    <DrawerOverlay />
-                    <DrawerContent>
-                      <DrawerHeader borderBottomWidth='1px'>Basic Drawer</DrawerHeader>
-                      <DrawerBody>
-                        <Grid templateColumns={{ base: 'repeat(1fr)', lg: '1fr 2fr 3fr' }} gap={2}>
-                          <GridItem w='100%' display={{ base: 'block', lg: 'none' }}>
-                            <Menu />
-                          </GridItem>
-                          <GridItem w='100%' display={{ base: 'block', lg: 'none' }}>
-                            <Dialogs />
-                          </GridItem>
-                          <GridItem w='100%'>
-                            <Routes>
-                              <Route path='/' element={<UserChat />} />
-                              <Route path='/group' element={<GroupChat />} />
-                            </Routes>
-                          </GridItem>
-                        </Grid>
-                      </DrawerBody>
-                    </DrawerContent>
-                  </Drawer>
-                </Box>
-              )}
+              <Box display={{ base: 'block', lg: 'none' }}>
+                {isInMessenger && (
+                  <Box display={{ base: 'block', lg: 'none' }}>
+                    <Button colorScheme='blue' onClick={onOpen}>
+                      <MenuLogo />
+                    </Button>
+                    <Drawer size='full' placement={placement} onClose={onClose} isOpen={isOpen}>
+                      <DrawerOverlay />
+                      <DrawerContent>
+                        <Box display='flex' alignItems='center'>
+                          <Container maxW='1400px'>
+                            <Box h='100%'>
+                              <DrawerCloseButton mt={6} color='primary.default' />
+                            </Box>
+
+                            <DrawerHeader>Menu</DrawerHeader>
+                          </Container>
+                        </Box>
+                        <DrawerBody>
+                          <Grid templateColumns={{ base: 'repeat(1fr)', lg: '1fr 2fr 3fr' }} gap={2}>
+                            <GridItem w='100%' display={{ base: 'block', lg: 'none' }}>
+                              <Menu />
+                            </GridItem>
+                            <GridItem w='100%' display={{ base: 'block', lg: 'none' }}>
+                              <Dialogs />
+                            </GridItem>
+                            <GridItem w='100%'>
+                              <Routes>
+                                <Route path='/' element={<UserChat />} />
+                                <Route path='/group' element={<GroupChat />} />
+                              </Routes>
+                            </GridItem>
+                          </Grid>
+                        </DrawerBody>
+                      </DrawerContent>
+                    </Drawer>
+                  </Box>
+                )}
+              </Box>
             </Box>
           </chakra.header>
         </Box>
