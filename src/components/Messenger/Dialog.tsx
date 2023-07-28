@@ -1,15 +1,15 @@
-import { Avatar, Box, Text } from '@chakra-ui/react';
+import { Avatar, Box, Button, Text } from '@chakra-ui/react';
 import React from 'react';
 import useTime from '../../hooks/useTime';
 import { Link } from 'react-router-dom';
 
-const Dialog: React.FC = ({ data }) => {
+const Dialog: React.FC = ({ data, onclosed }) => {
   const formatTime = useTime();
 
   const linkTarget = '/messenger/' + (data._dialogType === 'group' ? 'group' : 'user') + '/' + data._dialogId;
 
   return (
-    <Box>
+    <Box onClick={() => onclosed()}>
       <Link to={linkTarget}>
         <Box
           cursor='pointer'

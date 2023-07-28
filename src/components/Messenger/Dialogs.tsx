@@ -3,7 +3,7 @@ import React from 'react';
 import Dialog from './Dialog';
 import { useLocation } from 'react-router-dom';
 
-const Dialogs: React.FC = () => {
+const Dialogs: React.FC = ({ onclosed, onopened }) => {
   const testArr: any[] = [
     {
       _id: 'f47ac10b-58cc-4372-a567-0e02b2c3d479',
@@ -54,7 +54,7 @@ const Dialogs: React.FC = () => {
             <Box pt={5}>
               {testArr.map((item, index) => {
                 if (item._dialogType === 'chat') {
-                  return <Dialog key={index} data={item} />;
+                  return <Dialog onclosed={onclosed} onopened={onopened} key={index} data={item} />;
                 }
               })}
             </Box>
@@ -64,7 +64,7 @@ const Dialogs: React.FC = () => {
             <Box pt={5}>
               {testArr.map((item, index) => {
                 if (item._dialogType === 'group') {
-                  return <Dialog key={index} data={item} />;
+                  return <Dialog onclosed={onclosed} onopened={onopened} key={index} data={item} />;
                 }
               })}
             </Box>

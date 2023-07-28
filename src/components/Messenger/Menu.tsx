@@ -8,22 +8,20 @@ const Menu: React.FC = () => {
   const location = useLocation();
   const [selectedItem, setSelectedItem] = useState<number | null>(null);
 
-  const handleItemSelected = useCallback((itemId: number) => {
-    setSelectedItem(itemId);
-  }, []);
-
   function normalizePath(path: string) {
-    return path.replace(/\/{2,}/g, '/').replace(/\/$/, '');
+    return path.split('/').slice(0, 3).join('/');
   }
 
   useEffect(() => {
     const normalizedPath = normalizePath(location.pathname);
     if (normalizedPath === '/messenger/user') {
-      handleItemSelected(1);
+      setSelectedItem(1);
     } else if (normalizedPath === '/messenger/group') {
-      handleItemSelected(2);
+      setSelectedItem(2);
+    } else {
+      setSelectedItem(null);
     }
-  }, [location.pathname, handleItemSelected]);
+  }, [location.pathname]);
 
   const bgColor = useColorModeValue('neutral.white', 'neutral.grayDark');
   const color = useColorModeValue('neutral.grayDark', 'neutral.white');

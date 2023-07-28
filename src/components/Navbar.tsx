@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   Box,
   Button,
@@ -22,11 +22,12 @@ import {
 import theme from '../utils/theme';
 import Logo from '../assets/svg/Logo';
 import Dialogs from './Messenger/Dialogs';
-import { Link, Route, Routes, useLocation } from 'react-router-dom';
+import { Link, Route, Routes, useLocation, useParams } from 'react-router-dom';
 import UserChat from './Messenger/UserChat';
 import GroupChat from './Messenger/GroupChat';
 import Menu from './Messenger/Menu';
 import MenuLogo from '../assets/svg/MenuLogo';
+import { userContext } from '../Context/globalContext';
 const Navbar: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [placement, setPlacement] = React.useState<string>('left');
@@ -39,7 +40,8 @@ const Navbar: React.FC = () => {
       setIsInMessenger(false);
     }
   }, [location.pathname]);
-
+  const { userInfo, setUserInfo } = useContext(userContext);
+  const params = useParams();
   const mdMediaQuery = window.matchMedia('(min-width: 48em)');
 
   useEffect(() => {
@@ -84,7 +86,7 @@ const Navbar: React.FC = () => {
                     <Button colorScheme='blue' onClick={onOpen}>
                       <MenuLogo />
                     </Button>
-                    <Drawer size='full' placement={placement} onClose={onClose} isOpen={isOpen}>
+                    <Drawer size={{ base: 'full', sm: 'xl' }} placement={placement} onClose={onClose} isOpen={isOpen}>
                       <DrawerOverlay />
                       <DrawerContent>
                         <Box display='flex' alignItems='center'>
@@ -99,15 +101,15 @@ const Navbar: React.FC = () => {
                         <DrawerBody>
                           <Grid templateColumns={{ base: 'repeat(1fr)', lg: '1fr 2fr 3fr' }} gap={2}>
                             <GridItem w='100%' display={{ base: 'block', lg: 'none' }}>
-                              <Menu />
+                              <Menu onopened={onOpen} onclosed={onClose} />
                             </GridItem>
                             <GridItem w='100%' display={{ base: 'block', lg: 'none' }}>
-                              <Dialogs />
+                              <Dialogs onclosed={onClose} />
                             </GridItem>
                             <GridItem w='100%'>
                               <Routes>
-                                <Route path='/' element={<UserChat />} />
-                                <Route path='/group' element={<GroupChat />} />
+                                <Route path='/user/:id' element={<UserChat userInfo={userInfo} />} />
+                                <Route path='/group/:id' element={<GroupChat userInfo={userInfo} />} />
                               </Routes>
                             </GridItem>
                           </Grid>
