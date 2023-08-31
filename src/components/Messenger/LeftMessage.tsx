@@ -7,7 +7,7 @@ interface RightMessageProps {
   time: number;
 }
 
-const LeftMessage: React.FC = () => {
+const LeftMessage: React.FC = ({ message, time }) => {
   //   function formatTime(date) {
   //     const options = { hour12: true, hour: 'numeric', minute: 'numeric', second: 'numeric' };
   //     return new Date(date).toLocaleTimeString('en-US', options);
@@ -34,7 +34,7 @@ const LeftMessage: React.FC = () => {
         >
           <Box display='flex' color='neutral.grayDark' alignItems='center' w='100%' justifyContent='flex-end'>
             <Text fontWeight='regular' fontSize='2xs'>
-              Left message.
+              {message ? message : 'error'}
             </Text>
           </Box>
         </Box>
@@ -44,7 +44,8 @@ const LeftMessage: React.FC = () => {
 
         <Box transform='translateY(-16px)' ms={2}>
           <Text color='neutral.grayLight' fontWeight='regular' fontSize='3xs'>
-            {formatTime(Date.now())}
+            {/* {formatTime(Date.now())} */}
+            {time ? formatTime(time) : 'undefined'}
           </Text>
         </Box>
       </Box>

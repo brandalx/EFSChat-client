@@ -17,11 +17,11 @@ const UserChat: React.FC = ({ userInfo }) => {
         </Box>
 
         <Divider />
-        <Box px='10px' overflow='scroll' height='68vh' pt={5}>
+        <Box px='10px' overflow='auto' height='68vh' pt={5}>
           <Box display='flex' flexDir='column' justifyContent='space-between' h='100%'>
             <Box></Box>
             <Box mx={4}>
-              <LeftMessage />
+              <LeftMessage time={Date.now()} message={'cccc'} />
               <RightMessage />
               <LeftMessage />
               <RightMessage />
