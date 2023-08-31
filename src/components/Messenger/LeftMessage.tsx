@@ -7,7 +7,7 @@ interface RightMessageProps {
   time: number;
 }
 
-const LeftMessage: React.FC = ({ message, time }) => {
+const LeftMessage: React.FC = ({ message, time, nickname }) => {
   //   function formatTime(date) {
   //     const options = { hour12: true, hour: 'numeric', minute: 'numeric', second: 'numeric' };
   //     return new Date(date).toLocaleTimeString('en-US', options);
@@ -18,7 +18,7 @@ const LeftMessage: React.FC = ({ message, time }) => {
   return (
     <Box justifyContent='flex-start' display='flex' alignItems='center'>
       <Box me={2}>
-        <Avatar size='sm' name='John Doe' me={2} />
+        <Avatar size='sm' name={nickname} me={2} />
       </Box>
       <Box my={2} w='fit-content'>
         <Box

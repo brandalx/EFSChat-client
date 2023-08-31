@@ -7,7 +7,7 @@ interface RightMessageProps {
   time: number;
 }
 
-const RightMessage: React.FC = () => {
+const RightMessage: React.FC = ({ message, time, nickname }) => {
   //   function formatTime(date) {
   //     const options = { hour12: true, hour: 'numeric', minute: 'numeric', second: 'numeric' };
   //     return new Date(date).toLocaleTimeString('en-US', options);
@@ -31,7 +31,7 @@ const RightMessage: React.FC = () => {
         >
           <Box display='flex' color='white' alignItems='center' w='100%' justifyContent='flex-end'>
             <Text fontWeight='regular' fontSize='2xs'>
-              Right message
+              {message ? message : 'error'}
             </Text>
           </Box>
         </Box>
@@ -41,12 +41,12 @@ const RightMessage: React.FC = () => {
 
         <Box transform='translateY(-16px)' ms={2}>
           <Text color='neutral.grayLight' fontWeight='regular' fontSize='3xs'>
-            {formatTime(Date.now())}
+            {time ? formatTime(time) : 'undefined'}
           </Text>
         </Box>
       </Box>
       <Box>
-        <Avatar ms={2} size='sm' name='Brandon Nolan' me={2} />
+        <Avatar ms={2} size='sm' name={nickname} me={2} />
       </Box>
     </Box>
   );
