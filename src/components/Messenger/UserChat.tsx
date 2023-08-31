@@ -1,12 +1,12 @@
 import { Box, StackDivider, Divider, Text, Avatar } from '@chakra-ui/react';
-import React from 'react';
+import React, { useState } from 'react';
 import LeftMessage from './LeftMessage';
 import RightMessage from './RightMessage';
 
 import InputMessageUser from './InputMessageUser';
 
 const UserChat: React.FC = ({ userInfo }) => {
-  const dialogue = [
+  const [dialogue, setDialogue] = useState([
     {
       type: 'left',
       time: new Date('2023-08-31T09:00:00Z').toISOString(),
@@ -17,7 +17,7 @@ const UserChat: React.FC = ({ userInfo }) => {
       type: 'right',
       time: new Date('2023-08-31T09:02:00Z').toISOString(),
       content: 'I’ve been doing well, thanks! How about you?',
-      nickname: 'Bob'
+      nickname: userInfo
     },
     {
       type: 'left',
@@ -29,7 +29,7 @@ const UserChat: React.FC = ({ userInfo }) => {
       type: 'right',
       time: new Date('2023-08-31T09:05:00Z').toISOString(),
       content: 'Same here. The projects are piling up!',
-      nickname: 'Bob'
+      nickname: userInfo
     },
     {
       type: 'left',
@@ -41,7 +41,7 @@ const UserChat: React.FC = ({ userInfo }) => {
       type: 'right',
       time: new Date('2023-08-31T09:08:00Z').toISOString(),
       content: 'Definitely! How about next week?',
-      nickname: 'Bob'
+      nickname: userInfo
     },
     {
       type: 'left',
@@ -53,15 +53,18 @@ const UserChat: React.FC = ({ userInfo }) => {
       type: 'right',
       time: new Date('2023-08-31T09:10:00Z').toISOString(),
       content: 'Great, looking forward to it!',
-      nickname: 'Bob'
+      nickname: userInfo
     }
-  ];
+  ]);
+  const handleNewMessage = (newMessage) => {
+    setDialogue((prevDialogue) => [...prevDialogue, newMessage]);
+  };
 
   return (
     <Box mb={4}>
       <Box borderRadius='16px' borderWidth='1px' py='10px'>
         <Box py={2} ms={2} display='flex' justifyContent='center' alignItems='center'>
-          <Avatar size='sm' name='John' me={2} />
+          <Avatar size='sm' name={userInfo != null && userInfo} me={2} />
           <Text textAlign='center' fontSize='xs' fontWeight='bold' color='neutral.black'>
             {userInfo != null && userInfo}
           </Text>
@@ -93,7 +96,7 @@ const UserChat: React.FC = ({ userInfo }) => {
             <Box></Box>
           </Box>
         </Box>
-        <InputMessageUser />
+        <InputMessageUser userInfo={userInfo != null && userInfo} dialogue={dialogue} onNewMessage={handleNewMessage} />
       </Box>
     </Box>
   );
