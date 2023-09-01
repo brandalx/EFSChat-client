@@ -68,7 +68,7 @@ const UserChat: React.FC = ({ userInfo }) => {
 
   useEffect(() => {
     scrollToBottom();
-  }, [messages]);
+  }, [dialogue]);
 
   return (
     <Box mb={4}>
