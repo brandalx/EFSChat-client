@@ -1,5 +1,5 @@
 import { Box, StackDivider, Divider, Text, Avatar } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import LeftMessage from './LeftMessage';
 import RightMessage from './RightMessage';
 
@@ -60,6 +60,16 @@ const UserChat: React.FC = ({ userInfo }) => {
     setDialogue((prevDialogue) => [...prevDialogue, newMessage]);
   };
 
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
+
   return (
     <Box mb={4}>
       <Box borderRadius='16px' borderWidth='1px' py='10px'>
@@ -93,7 +103,9 @@ const UserChat: React.FC = ({ userInfo }) => {
               })}
             </Box>
 
-            <Box></Box>
+            <Box>
+              <div ref={messagesEndRef} />
+            </Box>
           </Box>
         </Box>
         <InputMessageUser userInfo={userInfo != null && userInfo} dialogue={dialogue} onNewMessage={handleNewMessage} />

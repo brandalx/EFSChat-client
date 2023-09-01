@@ -11,7 +11,7 @@ interface Props {
 
 const InputMessageUser: React.FC<Props> = ({ dialogue, userInfo, onNewMessage }) => {
   const [newMessage, setNewMessage] = useState<string>('');
-  const inputRef = useRef<HTMLInputElement>(null);
+  let inputRef = useRef<HTMLInputElement>(null);
 
   const sendMessage = () => {
     const messageContent = inputRef.current?.value || '';
@@ -25,7 +25,16 @@ const InputMessageUser: React.FC<Props> = ({ dialogue, userInfo, onNewMessage })
     };
 
     onNewMessage(messageBody);
+
+    // Resetting the input value using ref
+    if (inputRef != null) {
+      inputRef.current.value = '';
+    }
+
+    // Resetting the controlled state
+    setNewMessage('');
   };
+
   return (
     <Box px='10px'>
       <Box>
