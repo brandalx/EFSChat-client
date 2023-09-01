@@ -7,9 +7,10 @@ interface Props {
   dialogue: any[];
   onNewMessage: (message: any) => void;
   userInfo: string;
+  socketRef: any;
 }
 
-const InputMessageUser: React.FC<Props> = ({ dialogue, userInfo, onNewMessage }) => {
+const InputMessageUser: React.FC<Props> = ({ dialogue, userInfo, onNewMessage, socketRef }) => {
   const [newMessage, setNewMessage] = useState<string>('');
   let inputRef = useRef<HTMLInputElement>(null);
 
@@ -26,13 +27,15 @@ const InputMessageUser: React.FC<Props> = ({ dialogue, userInfo, onNewMessage })
 
     onNewMessage(messageBody);
 
-    // Resetting the input value using ref
     if (inputRef != null) {
       inputRef.current.value = '';
     }
 
-    // Resetting the controlled state
     setNewMessage('');
+    socketRef.current.emit('sendMessage', {
+      chat: 'test',
+      message: messageBody
+    });
   };
 
   return (

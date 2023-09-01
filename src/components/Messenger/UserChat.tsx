@@ -2,6 +2,7 @@ import { Box, StackDivider, Divider, Text, Avatar } from '@chakra-ui/react';
 import React, { useEffect, useRef, useState } from 'react';
 import LeftMessage from './LeftMessage';
 import RightMessage from './RightMessage';
+import { io } from 'socket.io-client';
 
 import InputMessageUser from './InputMessageUser';
 
@@ -70,6 +71,25 @@ const UserChat: React.FC = ({ userInfo }) => {
     scrollToBottom();
   }, [dialogue]);
 
+  const socketRef = useRef(null);
+  const [activeChatId, setActiveChatId] = useState(null);
+
+  useEffect(() => {
+    socketRef.current = io('http://localhost:3001');
+
+    setActiveChatId('test');
+    if (activeChatId) {
+      socketRef.current.emit('joinRoom', activeChatId);
+    }
+    socketRef.current.on('receiveMessage', (data) => {
+      console.log('Received message:', data.message);
+      setDialogue((prevMessages) => [...prevMessages, data.message]);
+    });
+    return () => {
+      socketRef.current.disconnect();
+    };
+  }, [activeChatId]);
+
   return (
     <Box mb={4}>
       <Box borderRadius='16px' borderWidth='1px' py='10px'>
@@ -108,7 +128,12 @@ const UserChat: React.FC = ({ userInfo }) => {
             </Box>
           </Box>
         </Box>
-        <InputMessageUser userInfo={userInfo != null && userInfo} dialogue={dialogue} onNewMessage={handleNewMessage} />
+        <InputMessageUser
+          socketRef={socketRef}
+          userInfo={userInfo != null && userInfo}
+          dialogue={dialogue}
+          onNewMessage={handleNewMessage}
+        />
       </Box>
     </Box>
   );
